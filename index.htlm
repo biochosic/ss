@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Діофант Александрійський | Візитка</title>
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f1f5f9;
+            --btn-hover: #0ea5e9;
+            --secondary-text: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        /* Анімація появи */
+        .screen {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-size: 2.5rem; text-align: center; color: var(--accent-color); margin-bottom: 10px; }
+        .subtitle { text-align: center; color: var(--secondary-text); margin-bottom: 40px; font-style: italic; }
+
+        /* Меню */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+            margin-bottom: 30px;
+        }
+
+        .back-btn:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Контентні блоки */
+        .content-box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .portrait {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            display: block;
+            margin: 0 auto 30px;
+            object-fit: cover;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: var(--secondary-text);
+            font-style: italic;
+        }
+
+        /* Тести */
+        .quiz-item { margin-bottom: 25px; border-bottom: 1px solid #334155; padding-bottom: 15px; }
+        .quiz-option {
+            display: block;
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .quiz-option:hover { background: rgba(255,255,255,0.08); }
+        #quiz-result { margin-top: 20px; font-size: 1.2rem; font-weight: bold; text-align: center; }
+
+        hr { border: 0; border-top: 1px solid #334155; margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <header id="main-menu" class="screen active">
+        <h1>🏛️ Діофант Александрійський</h1>
+        <p class="subtitle">"Батько алгебри" та останній геній античності</p>
+        <div class="menu-grid">
+            <button onclick="showScreen('bio')">📜 Біографія</button>
+            <button onclick="showScreen('contribution')">⚡ Внесок</button>
+            <button onclick="showScreen('tasks')">🧩 Завдання</button>
+            <button onclick="showScreen('tests')">📝 Тести</button>
+        </div>
+    </header>
+
+    <section id="bio" class="screen">
+        <button class="back-btn" onclick="showScreen('main-menu')">← Назад</button>
+        <div class="content-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Diophantus.jpg/250px-Diophantus.jpg" alt="Діофант" class="portrait">
+            <h2>Біографія</h2>
+            <p><strong>📍 Походження:</strong> Діофант жив у Александрії (Єгипет) — науковій столиці світу у III столітті н. е. ⏳</p>
+            <p><strong>🎓 Освіта:</strong> Належав до легендарного Мусейону. Він першим почав розглядати задачі як абстрактні логічні операції, а не просто вимірювання землі.</p>
+            <p><strong>⚙️ «Арифметика»:</strong> Праця з 13 книг, що стала першою спробою виділити алгебру в окрему науку. 🧪</p>
+            <p><strong>⚰️ Легенда:</strong> Згідно з математичною епітафією, він прожив 84 роки. Його ідеї випередили час на ціле тисячоліття. 🚀</p>
+        </div>
+    </section>
+
+    <section id="contribution" class="screen">
+        <button class="back-btn" onclick="showScreen('main-menu')">← Назад</button>
+        <div class="content-box">
+            <h2>⚡ Внесок в математику</h2>
+            <ul>
+                <li><strong>🔠 Символічна алгебра:</strong> Ввів буквені позначення для невідомих величин.</li>
+                <li><strong>🔢 Діофантові рівняння:</strong> Створив методи пошуку розв'язків у цілих числах.</li>
+                <li><strong>➖ Від'ємні числа:</strong> Сформулював правило «мінус на мінус дає плюс».</li>
+                <li><strong>🔝 Степені:</strong> Працював з числами аж до шостого степеня.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="tasks" class="screen">
+        <button class="back-btn" onclick="showScreen('main-menu')">← Назад</button>
+        <div class="content-box">
+            <h3>🪦 Загадка Епітафії</h3>
+            <blockquote>
+                "Шосту частину життя він був дитиною. Минула дванадцята — і пухом покрилося підборіддя. Ще сьома частина пройшла в шлюбі. Через 5 років народився син, який прожив лише половину віку батька. Через 4 роки після сина помер і Діофант."
+            </blockquote>
+            <p>💡 <strong>Розв'язання:</strong> Рівняння $x/6 + x/12 + x/7 + 5 + x/2 + 4 = x$ дає результат <strong>84 роки</strong>.</p>
+            <hr>
+            <h3>🏺 Задача про кубки</h3>
+            <p>1+2 кубки = 100г | 2+3 кубки = 150г | 1+3 кубки = 120г.</p>
+            <button onclick="alert('Відповідь: 1-й = 35г, 2-й = 65г, 3-й = 85г')">Перевірити себе</button>
+        </div>
+    </section>
+
+    <section id="tests" class="screen">
+        <button class="back-btn" onclick="showScreen('main-menu')">← Назад</button>
+        <div class="content-box">
+            <h2>Тест: Що ти знаєш про Діофанта?</h2>
+            <div id="quiz-container"></div>
+            <button id="submit-quiz" style="width:100%; margin-top:20px;" onclick="checkQuiz()">Завершити тест</button>
+            <div id="quiz-result"></div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function showScreen(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    const questions = [
+        { q: "У якому місті працював Діофант?", a: ["Афіни", "Рим", "Александрія", "Вавилон"], c: 2 },
+        { q: "Як називається його головна праця?", a: ["Оптика", "Начала", "Арифметика", "Геометрія"], c: 2 },
+        { q: "Яке правило він ввів?", a: ["Плюс на мінус дає нуль", "Мінус на мінус дає плюс", "Ділення на нуль"], c: 1 },
+        { q: "До якого степеня він досліджував числа?", a: ["До другого", "До третього", "До шостого"], c: 2 }
+    ];
+
+    function initQuiz() {
+        const container = document.getElementById('quiz-container');
+        container.innerHTML = questions.map((q, i) => `
+            <div class="quiz-item">
+                <p><strong>${i+1}. ${q.q}</strong></p>
+                ${q.a.map((opt, optIdx) => `
+                    <label class="quiz-option">
+                        <input type="radio" name="q${i}" value="${optIdx}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `).join('');
+    }
+
+    function checkQuiz() {
+        let score = 0;
+        questions.forEach((q, i) => {
+            const selected = document.querySelector(`input[name="q${i}"]:checked`);
+            if(selected && parseInt(selected.value) === q.c) score++;
+        });
+        document.getElementById('quiz-result').innerHTML = `Результат: ${score} з ${questions.length}`;
+    }
+
+    window.onload = initQuiz;
+</script>
+
+</body>
+</html>
